@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
+import androidx.core.view.ViewCompat
 import com.tbuonomo.viewpagerdotsindicator.BaseDotsIndicator.Type.DEFAULT
 
 class DotsIndicator @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
@@ -86,8 +87,8 @@ class DotsIndicator @JvmOverloads constructor(context: Context, attrs: Attribute
     } else {
       background.setColor(if (pager!!.currentItem == index) selectedDotColor else dotsColor)
     }
-    imageView.setBackgroundDrawable(background)
 
+    ViewCompat.setBackground(imageView, background)
     dot.setOnClickListener {
       if (dotsClickable && index < pager?.count ?: 0) {
         pager!!.setCurrentItem(index, true)
@@ -166,9 +167,9 @@ class DotsIndicator @JvmOverloads constructor(context: Context, attrs: Attribute
         background.setColor(dotsColor)
       }
     }
-
-    elevationItem.setBackgroundDrawable(background)
-    elevationItem.invalidate()
+    ViewCompat.setBackground(elevationItem, background)
+    // elevationItem.invalidate()
+    // we did not see any reason to invalidate
   }
 
   override val type get() = DEFAULT
