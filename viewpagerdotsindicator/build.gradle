@@ -10,10 +10,12 @@ buildscript {
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
+apply plugin: 'kotlin-kapt'
 android {
   compileSdkVersion 30
-
+  buildFeatures {
+    dataBinding true
+  }
   defaultConfig {
     minSdkVersion 15
     targetSdkVersion 30
