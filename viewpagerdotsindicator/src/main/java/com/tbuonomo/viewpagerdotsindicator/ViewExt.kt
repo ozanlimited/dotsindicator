@@ -1,6 +1,7 @@
 package com.tbuonomo.viewpagerdotsindicator
 
 import android.view.View
+import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
@@ -15,8 +16,7 @@ fun View.setPaddingVertical(padding: Int) {
 
 
 @BindingAdapter("allColor")
-fun DotsIndicator.allColor(@ColorRes colorRes: Int) {
-    val color = ContextCompat.getColor(context, colorRes)
+fun DotsIndicator.allColor(@ColorInt color: Int) {
     this.dotsColor = color
     this.selectedDotColor = color
 }
