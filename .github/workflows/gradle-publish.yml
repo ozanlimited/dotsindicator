@@ -35,8 +35,9 @@ jobs:
       - name: Publish to GitHub Package Registry 🚀
         run: bash ./gradlew :viewpagerdotsindicator:publish
         env:
-          GPR_USER: furkanaskin
+          GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release ✅
         id: create_release
@@ -52,6 +53,8 @@ jobs:
       - name: Upload OzanSuperApp's Library AAR 🗳
         uses: actions/upload-release-asset@v1
         env:
+          GPR_USER: ${{ github.actor }}
+          GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
