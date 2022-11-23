@@ -37,7 +37,7 @@ ext {
     mGroupId = "com.ozanlimited"
     mArtifactId = "viewpagerdotsindicator"
     mVersionCode = 1
-    mVersionName = "1.0.5"
+    mVersionName = "1.0.6"
 
     mLibraryName = "ViewPagerDotsIndicator"
     mLibraryDescription = ""
@@ -70,7 +70,7 @@ afterEvaluate {
         repositories {
             maven {
                 name = "GitHubPackages"
-                url = "https://maven.pkg.github.com/ozanlimited/dotsindicator"
+                url = uri("https://maven.pkg.github.com/ozanlimited/dotsindicator")
                 credentials {
                     username = System.getenv("GPR_USER")
                     password = System.getenv("GPR_KEY")
