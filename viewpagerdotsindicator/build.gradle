@@ -34,10 +34,10 @@ android {
 }
 
 ext {
-    mGroupId = "com.tbuonomo"
+    mGroupId = "com.ozanlimited"
     mArtifactId = "viewpagerdotsindicator"
     mVersionCode = 1
-    mVersionName = "1.0.4"
+    mVersionName = "1.0.5"
 
     mLibraryName = "ViewPagerDotsIndicator"
     mLibraryDescription = ""
