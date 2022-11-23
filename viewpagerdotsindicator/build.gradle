@@ -39,8 +39,8 @@ publishing {
             name = "GitHubPackages"
             url = "https://maven.pkg.github.com/ozanlimited/dotsindicator"
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("GPR_USER")
+                password = System.getenv("GPR_KEY")
             }
         }
     }
