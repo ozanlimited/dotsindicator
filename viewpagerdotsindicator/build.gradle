@@ -37,7 +37,7 @@ ext {
     mGroupId = "com.ozanlimited"
     mArtifactId = "dotsindicator"
     mVersionCode = 1
-    mVersionName = "1.1.4"
+    mVersionName = "1.1.5"
 
     mLibraryName = "ViewPagerDotsIndicator"
     mLibraryDescription = ""
@@ -48,23 +48,24 @@ task androidSourcesJar(type: Jar) {
     from android.sourceSets.main.java.srcDirs
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            groupId mGroupId
-            artifactId mArtifactId
-            version mVersionName
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId mGroupId
+                artifactId mArtifactId
+                version mVersionName
 
-            from components.java
+                from components.release
 
-            artifact androidSourcesJar
+                artifact androidSourcesJar
 
-            pom {
-                name = mLibraryName
-                description = mLibraryDescription
+                pom {
+                    name = mLibraryName
+                    description = mLibraryDescription
+                }
             }
         }
-    }
 
     repositories {
         maven {
@@ -78,6 +79,7 @@ publishing {
     }
 }
 
+publish.dependsOn assemble
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
