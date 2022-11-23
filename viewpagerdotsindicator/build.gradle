@@ -24,6 +24,7 @@ android {
         versionCode 1
         versionName version
     }
+
     buildTypes {
         release {
             minifyEnabled false
