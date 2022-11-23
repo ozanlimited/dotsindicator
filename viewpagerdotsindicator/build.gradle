@@ -32,19 +32,54 @@ android {
     }
 }
 
-publishing {
+ext {
+    mGroupId = "com.tbuonomo"
+    mArtifactId = "viewpagerdotsindicator"
+    mVersionCode = 1
+    mVersionName = "1.0.4"
 
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = "https://maven.pkg.github.com/ozanlimited/dotsindicator"
-            credentials {
-                username = System.getenv("GPR_USER")
-                password = System.getenv("GPR_KEY")
+    mLibraryName = "ViewPagerDotsIndicator"
+    mLibraryDescription = ""
+}
+
+task androidSourcesJar(type: Jar) {
+    archiveClassifier.set('sources')
+    from android.sourceSets.main.java.srcDirs
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId mGroupId
+                artifactId mArtifactId
+                version mVersionName
+
+                from components.release
+
+                artifact androidSourcesJar
+
+                pom {
+                    name = mLibraryName
+                    description = mLibraryDescription
+                }
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+                url = "https://maven.pkg.github.com/ozanlimited/dotsindicator"
+                credentials {
+                    username = System.getenv("GPR_USER")
+                    password = System.getenv("GPR_KEY")
+                }
             }
         }
     }
 }
+
+publish.dependsOn assemble
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
