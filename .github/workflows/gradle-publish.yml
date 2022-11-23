@@ -35,7 +35,7 @@ jobs:
       - name: Publish to GitHub Package Registry 🚀
         run: bash ./gradlew :viewpagerdotsindicator:publish
         env:
-          GPR_USER: ${{ github.actor }}
+          GPR_USER: furkanaskin
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Create Release ✅
