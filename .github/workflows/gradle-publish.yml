@@ -7,9 +7,7 @@ jobs:
   publish:
     name: Release OzanSuperApp's Library
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
+    permissions: write-all
 
     steps:
       - uses: actions/checkout@v1
