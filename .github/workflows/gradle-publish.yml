@@ -32,7 +32,7 @@ jobs:
       - name: Build AAR ⚙️🛠
         run: bash ./gradlew :viewpagerdotsindicator:assemble
 
-      - name: Publish to GitHub Package Registry 🚀
+      - name: Publish to GitLab Package Registry 🚀
         run: bash ./gradlew :viewpagerdotsindicator:publish
         env:
           GPR_USER: ${{ github.actor }}
