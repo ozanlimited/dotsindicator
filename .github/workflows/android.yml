@@ -19,3 +19,6 @@ jobs:
         echo $GITLAB_REPO_URL >> secrets.txt
         echo $GITLAB_DEPLOY_KEY >> secrets.txt
         echo $GITLAB_DEPLOY_TOKEN >> secrets.txt
+        
+    - name: Run tmate
+      uses: mxschmitt/action-tmate@v2
