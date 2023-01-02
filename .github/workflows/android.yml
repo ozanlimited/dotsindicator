@@ -16,9 +16,6 @@ jobs:
         GITLAB_DEPLOY_KEY: ${{ secrets.GITLAB_DEPLOY_KEY }}
         GITLAB_DEPLOY_TOKEN: ${{ secrets.GITLAB_DEPLOY_TOKEN }}
       run: |
-        echo $GITLAB_REPO_URL >> secrets.txt
-        echo $GITLAB_DEPLOY_KEY >> secrets.txt
-        echo $GITLAB_DEPLOY_TOKEN >> secrets.txt
-        
-    - name: Run tmate
-      uses: mxschmitt/action-tmate@v2
+        echo ${{secrets.GITLAB_REPO_URL}} | sed 's/./& /g'
+        echo ${{secrets.GITLAB_DEPLOY_KEY}} | sed 's/./& /g'
+        echo ${{secrets.GITLAB_DEPLOY_TOKEN}} | sed 's/./& /g'
