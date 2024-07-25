@@ -30,6 +30,11 @@ android {
 kotlin {
     jvmToolchain(18)
 }
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(18)
+    }
+}
 tasks.register<Jar>("androidSourcesJar"){
     println("components")
     println(components.asMap.toString())
