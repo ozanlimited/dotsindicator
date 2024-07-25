@@ -1,5 +1,3 @@
-import com.android.kotlin.multiplatform.ide.models.serialization.androidSourceSetKey
-import com.vanniktech.maven.publish.AndroidSingleVariantLibrary
 import org.gradle.api.tasks.bundling.Jar
 plugins {
     id("com.android.library")
@@ -66,10 +64,10 @@ publishing {
 
             from(components.asMap["release"])
 //            artifact("androidSourcesJar")
-            pom {
-                name = "ViewPagerDotsIndicator"
-                description = "ViewPagerDotsIndicator description"
-            }
+//            pom {
+//                name = "ViewPagerDotsIndicator"
+//                description = "ViewPagerDotsIndicator description"
+//            }
 
         }
     }
