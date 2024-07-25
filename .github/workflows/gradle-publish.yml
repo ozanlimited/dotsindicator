@@ -31,6 +31,13 @@ jobs:
 
       - name: Build AAR ⚙️🛠
         run: bash ./gradlew :viewpagerdotsindicator:assemble
+        env:
+          GPR_USER: ${{ github.actor }}
+          GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITLAB_REPO_URL: ${{ secrets.ANDROID_GITLAB_REPO_URL }}
+          GITLAB_DEPLOY_KEY: ${{ secrets.ANDROID_GITLAB_DEPLOY_KEY }}
+          GITLAB_DEPLOY_TOKEN: ${{ secrets.ANDROID_GITLAB_DEPLOY_TOKEN }}
 
       - name: Publish to GitLab Package Registry 🚀
         run: bash ./gradlew :viewpagerdotsindicator:publish
