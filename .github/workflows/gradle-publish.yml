@@ -38,9 +38,9 @@ jobs:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLAB_REPO_URL: ${{ secrets.ANDROID_GITLAB_REPO_URL }}
-          GITLAB_DEPLOY_KEY: ${{ secrets.ANDROID_GITLAB_DEPLOY_KEY }}
-          GITLAB_DEPLOY_TOKEN: ${{ secrets.ANDROID_GITLAB_DEPLOY_TOKEN }}
+          GITLAB_REPO_URL: ${{ secrets.GITLAB_REPO_URL }}
+          GITLAB_DEPLOY_KEY: ${{ secrets.GITLAB_DEPLOY_KEY }}
+          GITLAB_DEPLOY_TOKEN: ${{ secrets.GITLAB_DEPLOY_TOKEN }}
 
       - name: Create Release ✅
         id: create_release
@@ -49,9 +49,9 @@ jobs:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLAB_REPO_URL: ${{ secrets.ANDROID_GITLAB_REPO_URL }}
-          GITLAB_DEPLOY_KEY: ${{ secrets.ANDROID_GITLAB_DEPLOY_KEY }}
-          GITLAB_DEPLOY_TOKEN: ${{ secrets.ANDROID_GITLAB_DEPLOY_TOKEN }}
+          GITLAB_REPO_URL: ${{ secrets.GITLAB_REPO_URL }}
+          GITLAB_DEPLOY_KEY: ${{ secrets.GITLAB_DEPLOY_KEY }}
+          GITLAB_DEPLOY_TOKEN: ${{ secrets.GITLAB_DEPLOY_TOKEN }}
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
@@ -64,9 +64,9 @@ jobs:
           GPR_USER: ${{ github.actor }}
           GPR_KEY: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITLAB_REPO_URL: ${{ secrets.ANDROID_GITLAB_REPO_URL }}
-          GITLAB_DEPLOY_KEY: ${{ secrets.ANDROID_GITLAB_DEPLOY_KEY }}
-          GITLAB_DEPLOY_TOKEN: ${{ secrets.ANDROID_GITLAB_DEPLOY_TOKEN }}
+          GITLAB_REPO_URL: ${{ secrets.GITLAB_REPO_URL }}
+          GITLAB_DEPLOY_KEY: ${{ secrets.GITLAB_DEPLOY_KEY }}
+          GITLAB_DEPLOY_TOKEN: ${{ secrets.GITLAB_DEPLOY_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: viewpagerdotsindicator/build/outputs/aar/viewpagerdotsindicator-release.aar
