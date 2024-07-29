@@ -38,6 +38,10 @@ java {
 tasks.register<Jar>("androidSourcesJar"){
     println("components")
     println(components.asMap.toString())
+//    println("env vars:")
+//    println(uri(System.getenv("GITLAB_REPO_URL")).toString())
+//    println((System.getenv("GITLAB_DEPLOY_KEY")).toString())
+//    println((System.getenv("GITLAB_DEPLOY_TOKEN")).toString())
     archiveClassifier.set("sources")
     from(android.sourceSets["main"].java.srcDirs)
 //    from android.sourceSets.main.java.srcDirs
@@ -64,7 +68,7 @@ publishing {
         register<MavenPublication>("MavenPub") {
             groupId = "com.ozanlimited"
             artifactId = "dotsindicator"
-            version = "1.3.0"
+            version = "1.3.9"
 //            from(components["kotlin"])
 
             from(components.asMap["release"])
