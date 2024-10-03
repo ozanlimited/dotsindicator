@@ -68,7 +68,7 @@ publishing {
         register<MavenPublication>("MavenPub") {
             groupId = "com.ozanlimited"
             artifactId = "dotsindicator"
-            version = "1.3.9"
+            version = "1.4.0"
 //            from(components["kotlin"])
 
             from(components.asMap["release"])
