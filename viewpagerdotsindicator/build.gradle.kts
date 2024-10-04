@@ -1,4 +1,5 @@
 import org.gradle.api.tasks.bundling.Jar
+
 plugins {
     id("com.android.library")
     kotlin("android")
@@ -35,60 +36,35 @@ java {
         languageVersion = JavaLanguageVersion.of(18)
     }
 }
-tasks.register<Jar>("androidSourcesJar"){
-    println("components")
-    println(components.asMap.toString())
-//    println("env vars:")
-//    println(uri(System.getenv("GITLAB_REPO_URL")).toString())
-//    println((System.getenv("GITLAB_DEPLOY_KEY")).toString())
-//    println((System.getenv("GITLAB_DEPLOY_TOKEN")).toString())
+tasks.register<Jar>("androidSourcesJar") {
     archiveClassifier.set("sources")
     from(android.sourceSets["main"].java.srcDirs)
-//    from android.sourceSets.main.java.srcDirs
 }
-//val sourcesJar by tasks.registering(Jar::class) {
-//    classifier = "sources"
-//    from(sourceSets.main.get().allSource)
-//}
-/* todo
-ext {
-    mGroupId = "com.ozanlimited"
-    mArtifactId = "dotsindicator"
-    mVersionCode = 2
-    mVersionName = "1.3.0"
 
-    mLibraryName = "ViewPagerDotsIndicator"
-    mLibraryDescription = ""
-}*/
 tasks.withType<PublishToMavenRepository> {
     dependsOn("assemble")
 }
-publishing {
-    publications {
-        register<MavenPublication>("MavenPub") {
-            groupId = "com.ozanlimited"
-            artifactId = "dotsindicator"
-            version = "1.4.0"
-//            from(components["kotlin"])
 
-            from(components.asMap["release"])
-//            artifact("androidSourcesJar")
-//            pom {
-//                name = "ViewPagerDotsIndicator"
-//                description = "ViewPagerDotsIndicator description"
-//            }
-
-        }
-    }
-    repositories {
-        maven {
-            url = uri(System.getenv("GITLAB_REPO_URL"))
-            credentials(HttpHeaderCredentials::class){
-                name = System.getenv("GITLAB_DEPLOY_KEY")
-                value = System.getenv("GITLAB_DEPLOY_TOKEN")
+afterEvaluate {
+    publishing {
+        publications {
+            register<MavenPublication>("MavenPub") {
+                groupId = "com.ozanlimited"
+                artifactId = "dotsindicator"
+                version = "1.4.0"
+                from(components.asMap["release"])
             }
-            authentication {
-                create<HttpHeaderAuthentication>("header")
+        }
+        repositories {
+            maven {
+                url = uri(System.getenv("GITLAB_REPO_URL"))
+                credentials(HttpHeaderCredentials::class) {
+                    name = System.getenv("GITLAB_DEPLOY_KEY")
+                    value = System.getenv("GITLAB_DEPLOY_TOKEN")
+                }
+                authentication {
+                    create<HttpHeaderAuthentication>("header")
+                }
             }
         }
     }
